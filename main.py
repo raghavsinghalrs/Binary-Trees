@@ -34,8 +34,22 @@ class BST:
         self.right.search(val)
       else:
         print('Sorry, Data is not exist!')
+  """PreOrder Traveral root->left->right"""
+  def POT(self):
+    print(self.val)
+    if self.left:
+      self.left.POT()
+    if self.right:
+      self.right.POT()
+  #Inorder Traversal left->root->right
+  def inorder(self):
+    if self.left:
+      self.left.inorder()
+    print(self.val)
+    if self.right:
+      self.right.inorder()
 root = BST(10)
 lst = [20,4,9,5,7,22,3]
 for i in lst:
   root.insert(i)
-root.search(9)
+root.inorder()
