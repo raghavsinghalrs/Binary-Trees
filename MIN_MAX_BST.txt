@@ -1,0 +1,66 @@
+class BST:
+  
+  def __init__(self,val):
+    self.val = val
+    self.left = None
+    self.right = None
+    
+  def insert(self,val):
+    if self.val is None:
+      self.val = val 
+      return
+
+    if self.val>val:
+      if self.left:
+        self.left.insert(val)
+      else:
+        self.left = BST(val)
+    else:
+      if self.right:
+        self.right.insert(val)
+      else:
+        self.right =BST(val)
+  def search(self,val):
+    if self.val==val:
+      print('You got your node!')
+      return
+    if self.val>val:
+      if self.left:
+        self.left.search(val)
+      else:
+        print('Sorry, Data is not exist!')
+    else:
+      if self.right:
+        self.right.search(val)
+      else:
+        print('Sorry, Data is not exist!')
+  """PreOrder Traveral root->left->right"""
+  def POT(self):
+    print(self.val)
+    if self.left:
+      self.left.POT()
+    if self.right:
+      self.right.POT()
+  #Inorder Traversal left->root->right
+  def inorder(self):
+    if self.left:
+      self.left.inorder()
+    print(self.val)
+    if self.right:
+      self.right.inorder()
+  def min_key(self):
+    curr = self
+    while curr.left:
+      curr=curr.left 
+    print(curr.val)
+  def max_key(self):
+    curr = self
+    while curr.right:
+      curr=curr.right
+    print(curr.val)
+root = BST(10)
+lst = [20,4,9,5,98,7,22,3]
+for i in lst:
+  root.insert(i)
+root.min_key()
+root.max_key()
