@@ -1,0 +1,53 @@
+class BST:
+  
+  def __init__(self,val):
+    self.val = val
+    self.left = None
+    self.right = None
+    
+  def insert(self,val):
+    if self.val is None:
+      self.val = val 
+      return
+
+    if self.val>val:
+      if self.left:
+        self.left.insert(val)
+      else:
+        self.left = BST(val)
+    else:
+      if self.right:
+        self.right.insert(val)
+      else:
+        self.right =BST(val)
+  def IOT(self):
+    temp = []
+    arr = []
+    lst = [self]
+    print(lst[0])
+    lst.append(None)
+    while lst!=[]:
+      curr = lst.pop(0)
+      print(curr,"curr")
+      if curr==None:
+        temp.append(arr[:])
+        arr = []
+        if lst==[]:
+          break
+        else:
+          lst.append(None)
+      else:
+        arr.append(curr.val)
+        print(arr,"arr")
+        if curr.left:
+          lst.append(curr.left)
+        if curr.right:
+          lst.append(curr.right)
+      print(temp,"temp")
+    print(temp)
+      
+root = BST(3)
+lst = [1,2,5,6,7,8]
+for i in lst:
+  root.insert(i)
+root.IOT()
